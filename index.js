@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 const API_URL = "https://secrets-api.appbrewery.com/";
 
-//TODO 1: Fill in your values for the 3 types of auth.
+
 const yourUsername = "cheetahikehde";
 const yourPassword = "kehdehucheeta";
 let yourAPIKey = "e4b09ac5-9065-45e3-8fb3-07e1af26ea77";
@@ -42,19 +42,6 @@ app.get("/basicAuth", async (req, res) => {
     console.log(`This error happens : ${error.message}`);
     res.render("index.ejs", { content: error.message });
   }
-
-  //TODO 3: Write your code here to hit up the /all endpoint
-  //Specify that you only want the secrets from page 2
-  //HINT: This is how you can use axios to do basic auth:
-  // https://stackoverflow.com/a/74632908
-  /*
-   axios.get(URL, {
-      auth: {
-        username: "abc",
-        password: "123",
-      },
-    });
-  */
 });
 
 app.get("/apiKey", async (req, res) => {
@@ -86,10 +73,6 @@ app.get("/apiKey", async (req, res) => {
   } catch (error) {
     console.log(`Error in fetching the activity : ${error.message}`);
   }
-
-  //TODO 4: Write your code here to hit up the /filter endpoint
-  //Filter for all secrets with an embarassment score of 5 or greater
-  //HINT: You need to provide a query parameter of apiKey in the request.
 });
 
 app.get("/bearerToken", async (req, res) => {
@@ -121,20 +104,6 @@ app.get("/bearerToken", async (req, res) => {
   } catch (error) {
     console.log(`Error in fetching the activity by token : ${error.message}`);
   }
-
-
-
-  //TODO 5: Write your code here to hit up the /secrets/{id} endpoint
-  //and get the secret with id of 42
-  //HINT: This is how you can use axios to do bearer token auth:
-  // https://stackoverflow.com/a/52645402
-  /*
-  axios.get(URL, {
-    headers: { 
-      Authorization: `Bearer <YOUR TOKEN HERE>` 
-    },
-  });
-  */
 });
 
 app.listen(port, () => {
